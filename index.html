@@ -39,7 +39,7 @@
     </div>
 
     <!-- 点击重播区域 -->
-    <div id="replayButton"></div>
+    <div id="replayButton">重播</div>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
@@ -47,14 +47,18 @@
         const player = new Vimeo.Player(iframe);
 
         // 设置视频为循环播放
-        player.setLoop(true);
+        player.setLoop(true).catch(error => {
+            console.error('Error setting loop:', error);
+        });
 
         // 点击重播区域时，重播视频
         document.getElementById('replayButton').addEventListener('click', () => {
             player.setCurrentTime(0).then(() => {
-                player.play();
+                player.play().catch(error => {
+                    console.error('Error playing video:', error);
+                });
             }).catch(error => {
-                console.error('Error:', error);
+                console.error('Error setting time:', error);
             });
         });
     </script>
