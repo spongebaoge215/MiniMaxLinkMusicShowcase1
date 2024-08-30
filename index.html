@@ -9,9 +9,15 @@
         body, html {
             margin: 0;
             padding: 0;
-            overflow: hidden;
             height: 100%;
             background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        video {
+            height: 100vh; /* 视频高度充满屏幕 */
+            width: auto; /* 宽度根据视频比例自动调整 */
         }
         /* 定义点击重播区域样式 */
         #replayButton {
