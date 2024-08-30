@@ -33,19 +33,19 @@
 </head>
 <body>
     <!-- 视频播放区域 -->
-<div style="padding:75% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1004357203?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="MiniMaxOpenday音乐showcase_独处MeTime_D0829A_深蓝透胶"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+    <div style="padding:75% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1004357203?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="MiniMaxOpenday音乐showcase_独处MeTime_D0829A_深蓝透胶"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
     <!-- 点击重播区域 -->
     <div id="replayButton"></div>
 
     <script>
-        // 获取视频元素
-        const video = document.getElementById('productVideo');
+        const iframe = document.querySelector('iframe');
+        const player = new Vimeo.Player(iframe);
 
-        // 点击左下角重播按钮时，重播视频
         document.getElementById('replayButton').addEventListener('click', () => {
-            video.currentTime = 0;
-            video.play();
+            player.setCurrentTime(0).then(() => {
+                player.play();
+            });
         });
     </script>
 </body>
